@@ -1,7 +1,13 @@
+using DI.IRepository;
+using DI.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ISingleton, ImplementationRepository>();
+builder.Services.AddScoped<IScoped, ImplementationRepository>();
+builder.Services.AddTransient<ITransient, ImplementationRepository>();
 
 var app = builder.Build();
 
